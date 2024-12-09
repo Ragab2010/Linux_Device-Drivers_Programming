@@ -1,0 +1,64 @@
+{
+    "configurations": [
+      {
+        "name": "Linux Kernel",
+        "includePath": [
+          "${workspaceFolder}/**",
+          "/usr/include",
+          "/usr/local/include",
+          "/lib/modules/5.15.0-124-generic/build/include",
+          "/lib/modules/5.15.0-124-generic/build/include/linux",
+          "/lib/modules/5.15.0-124-generic/build/include/generated",
+          "/lib/modules/5.15.0-124-generic/build/arch/x86/include",
+          "/lib/modules/5.15.0-124-generic/build/arch/x86/include/generated",
+          "/lib/modules/5.15.0-124-generic/build/arch/x86/include/uapi",
+          "/lib/modules/5.15.0-124-generic/build/include/uapi",
+          "/lib/modules/5.15.0-124-generic/build/include/generated/uapi",
+          "/lib/modules/5.15.0-124-generic/build/include/asm-generic",
+          "/usr/src/linux-headers-5.15.0-124-generic/include",   // Added path to kernel headers for better support
+          "/usr/src/linux-headers-5.15.0-124-generic/include/linux",
+          "/usr/src/linux-headers-5.15.0-124-generic/include/uapi"  // Make sure the kernel headers are accessible
+        ],
+        "defines": [
+          "__KERNEL__",
+          "__GNUC__",
+          "MODULE",
+          "_LINUX",
+          "KBUILD_MODNAME=\"mymodule\"",
+          "CONFIG_X86_64=1",
+          "CONFIG_64BIT=1"
+        ],
+        "compilerPath": "/usr/bin/gcc",
+        "cStandard": "gnu11",
+        "cppStandard": "gnu++14",
+        "intelliSenseMode": "linux-gcc-x64",
+        "compilerArgs": [
+          "-nostdinc",                 // Ensure standard system headers aren't included
+          "-Wall",                      // Enable all warnings
+          "-Wundef",                    // Warn if undefined macros are used
+          "-Wstrict-prototypes",        // Enforce function prototypes
+          "-Wno-trigraphs",             // Disable trigraphs warnings
+          "-fno-strict-aliasing",       // Avoid strict aliasing optimizations
+          "-fno-common",                // Disable common symbols (useful for modules)
+          "-fshort-wchar",              // Short wide character type
+          "-Werror-implicit-function-declaration",  // Treat implicit function declarations as errors
+          "-Wno-format-security",       // Disable format string security warnings
+          "-std=gnu89",                 // Use the kernel's C89 standard (usually)
+          "-m64"                        // Enable 64-bit mode for x86_64 architecture
+        ],
+        "browse": {
+          "path": [
+            "${workspaceFolder}",
+            "/lib/modules/5.15.0-124-generic/build/include",
+            "/lib/modules/5.15.0-124-generic/build/arch/x86/include",
+            "/usr/src/linux-headers-5.15.0-124-generic/include",   // Added for better browse support
+            "/usr/src/linux-headers-5.15.0-124-generic/include/linux"
+          ],
+          "limitSymbolsToIncludedHeaders": true,
+          "databaseFilename": "${workspaceFolder}/.vscode/browse.vc.db"
+        }
+      }
+    ],
+    "version": 4
+  }
+  
